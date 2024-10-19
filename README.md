@@ -1,5 +1,8 @@
 # Flappy Bird Gymnasium Environment
 
+## Note
+I do NOT own any of the original game assets! This repository is currently not in development, so there might be bugs. I have been able to train models with the current environment so it is functional.
+
 **Description**
 * The player is a little bird that tries to get trough the gap between the green pipes.
 
