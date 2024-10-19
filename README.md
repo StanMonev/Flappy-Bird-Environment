@@ -26,5 +26,3 @@ I do NOT own any of the original game assets! This repository is currently not i
 * Start original game with `python main.py` or `python main.py --mode original`
 * Start game in pixelated environment mode with `python main.py --mode pixels`
 * Start game in features environment mode with `python main.py --mode features`
-* Let a random agent play with `python main.py --mode random` (WIP)
-* Run tests with `python env_tests.py` or with `python main.py --mode test`
