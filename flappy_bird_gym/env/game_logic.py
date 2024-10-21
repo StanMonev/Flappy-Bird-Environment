@@ -5,9 +5,9 @@ from typing import Tuple, Union, Dict
 
 import pygame
 from pygame.sprite import spritecollide as collision
-import envs.flappy_bird.flappy_bird_gym.utils as utils
+import flappy_bird_gym.utils as utils
 
-from envs.flappy_bird.flappy_bird_gym.constants import (
+from flappy_bird_gym.constants import (
     BACKGROUND_WIDTH, 
     SCROLL_SPEED, 
     BIRD_ACC, 

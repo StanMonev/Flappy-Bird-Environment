@@ -1,7 +1,7 @@
 import pygame
 import math
 
-import envs.flappy_bird.flappy_bird_gym.utils as utils
+import flappy_bird_gym.utils as utils
 
 
 class GameRenderer:

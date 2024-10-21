@@ -4,8 +4,8 @@ import gymnasium as gym
 import numpy as np
 import pygame
 
-from envs.flappy_bird.flappy_bird_gym.env.game_logic import GameLogic
-from envs.flappy_bird.flappy_bird_gym.env.renderer import GameRenderer
+from flappy_bird_gym.env.game_logic import GameLogic
+from flappy_bird_gym.env.renderer import GameRenderer
 
 class FlappyBirdEnv(gym.Env):
 

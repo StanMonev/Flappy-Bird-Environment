@@ -1,12 +1,11 @@
-import envs.flappy_bird.flappy_bird_gym.env.flappy_bird_env as FlappyBirdEnv
-import envs.flappy_bird.flappy_bird_gym.original_game as OriginalGame
+import flappy_bird_gym.env.flappy_bird_env as FlappyBirdEnv
+import flappy_bird_gym.original_game as OriginalGame
 from gymnasium.utils.play import play
 import gymnasium as gym
 import numpy as np
 import pygame
 import time
 import argparse
-import test_env
 
 key_to_action = {(pygame.K_SPACE,): np.array([1])}
 

@@ -2,8 +2,8 @@ import pygame
 from sys import exit
 import random
 
-import envs.flappy_bird.flappy_bird_gym.constants as CONSTANTS
-import envs.flappy_bird.flappy_bird_gym.utils as utils
+import flappy_bird_gym.constants as CONSTANTS
+import flappy_bird_gym.utils as utils
 
 g_clock = pygame.time.Clock()
 

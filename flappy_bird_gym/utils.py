@@ -8,12 +8,12 @@ from pygame.transform import flip as img_flip
 
 from pygame import image as pyg_image
 from pygame.transform import scale as img_scale
-from envs.flappy_bird.flappy_bird_gym.constants import BACKGROUND_HEIGHT as win_height
-from envs.flappy_bird.flappy_bird_gym.constants import BACKGROUND_WIDTH as win_width
-from envs.flappy_bird.flappy_bird_gym.constants import BIRD_WIDTH
-from envs.flappy_bird.flappy_bird_gym.constants import BIRD_HEIGHT
-from envs.flappy_bird.flappy_bird_gym.constants import PIPE_HEIGHT
-from envs.flappy_bird.flappy_bird_gym.constants import PIPE_WIDTH
+from flappy_bird_gym.constants import BACKGROUND_HEIGHT as win_height
+from flappy_bird_gym.constants import BACKGROUND_WIDTH as win_width
+from flappy_bird_gym.constants import BIRD_WIDTH
+from flappy_bird_gym.constants import BIRD_HEIGHT
+from flappy_bird_gym.constants import PIPE_HEIGHT
+from flappy_bird_gym.constants import PIPE_WIDTH
 
 
 _BASE_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
