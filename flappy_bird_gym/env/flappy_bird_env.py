@@ -65,12 +65,16 @@ class FlappyBirdEnv(gym.Env):
       0.0,  # Bottom Right Point of Top Pipe
       0.0,  # Top Left Point of Bottom Pipe
       0.0,  # Top Right Point of Bottom Pipe
+      0.0,  # Bottom Left Point of Next Top Pipe
+      0.0,  # Bottom Right Point of Next Top Pipe
+      0.0,  # Top Left Point of Next Bottom Pipe
+      0.0,  # Top Right Point of Next Bottom Pipe
       -1.0, # Velocity
       0.0,  # Top Point of the Bird
       0.0   # Bottom Point of the Bird
     ]
 
-    high = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    high = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 
     return gym.spaces.Box(
               low=np.array(low),
@@ -88,16 +92,22 @@ class FlappyBirdEnv(gym.Env):
     visable_top_pipe_bottom_right = 1.0
     visable_bottom_pipe_top_left = 1.0
     visable_bottom_pipe_top_right = 1.0
+    
+    visable_next_top_pipe_bottom_left = 1.0
+    visable_next_top_pipe_bottom_right = 1.0
+    visable_next_bottom_pipe_top_left = 1.0
+    visable_next_bottom_pipe_top_right = 1.0
 
     bird_x = self._game.bird.sprite.rect.left
     bird_y = self._game.bird.sprite.rect.top
 
+    pipe_gap = 0
+
     velocity = self._game.bird.sprite.vel / self._game.constants.BIRD_MAX_VEL_Y
 
     visable_top_pipe = self._not_passed_top_pipe()
-    if visable_top_pipe is not None:
 
-      pipe_gap = 0
+    if visable_top_pipe is not None:
 
       if self._game is not None:
         pipe_gap = self._game.constants.PIPE_GAP
@@ -120,6 +130,19 @@ class FlappyBirdEnv(gym.Env):
       visable_bottom_pipe_top_left = (visable_top_pipe.rect.bottomleft[0] + pipe_gap) / self._screen_size[0]
       visable_bottom_pipe_top_right = (visable_top_pipe.rect.bottomright[0] + pipe_gap) / self._screen_size[0]
 
+    
+    visable_next_top_pipe = self._last_visable_top_pipe()
+    
+    if visable_next_top_pipe is not None and visable_next_top_pipe != visable_top_pipe:
+
+      if self._game is not None:
+        pipe_gap = self._game.constants.PIPE_GAP
+
+      visable_next_top_pipe_bottom_left = visable_next_top_pipe.rect.bottomleft[0] / self._screen_size[0]
+      visable_next_top_pipe_bottom_right = visable_next_top_pipe.rect.bottomright[0] / self._screen_size[0]
+      visable_next_bottom_pipe_top_left = (visable_next_top_pipe.rect.bottomleft[0] + pipe_gap) / self._screen_size[0]
+      visable_next_bottom_pipe_top_right = (visable_next_top_pipe.rect.bottomright[0] + pipe_gap) / self._screen_size[0]
+
     features = [
       h_dist,
       v_dist,
@@ -127,6 +150,10 @@ class FlappyBirdEnv(gym.Env):
       visable_top_pipe_bottom_right,
       visable_bottom_pipe_top_left,
       visable_bottom_pipe_top_right,
+      visable_next_top_pipe_bottom_left, 
+      visable_next_top_pipe_bottom_right,
+      visable_next_bottom_pipe_top_left, 
+      visable_next_bottom_pipe_top_right,
       velocity,
       bird_top,
       bird_bottom
@@ -145,6 +172,14 @@ class FlappyBirdEnv(gym.Env):
     for sprite in sprites:
       if sprite.pipe_type == 'top' and sprite.rect.right >= self._game.bird.sprite.rect.left:
         return sprite
+      
+  def _last_visable_top_pipe(self):
+
+    sprites = self._pipe_sprites()
+    if len(sprites) >= 4:
+      return sprites[-2] # the second to last pipe is always the next visable top pipe
+    else:
+      return None
       
   def _bird_hits_top_reward(self, reward):
     bird_upper_bound = self._game.bird_y

@@ -11,15 +11,15 @@ key_to_action = {(pygame.K_SPACE,): np.array([1])}
 
 def main(mode):
     if mode == 'pixels':
-        env = gym.make('FlappyBird-pixels-v0', render_mode="rgb_array")
+        env = gym.make('FlappyBird-pixels-v1', render_mode="rgb_array")
         play(env, keys_to_action= key_to_action, noop=0) 
     else:
-        env = gym.make('FlappyBird-features-v0', render_mode="rgb_array")
+        env = gym.make('FlappyBird-features-v1', render_mode="rgb_array")
         play(env, keys_to_action= key_to_action, noop=0) 
 
 
 def random_agent_env():
-    env = gym.make("FlappyBird-features-v0", render_mode="rgb_array")
+    env = gym.make("FlappyBird-features-v1", render_mode="rgb_array")
     env.reset()
     score = 0
     for _ in range(1000):
