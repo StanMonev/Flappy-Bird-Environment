@@ -1,10 +1,12 @@
 # Flappy Bird Gymnasium Environment
 
+This is a <a href="https://gymnasium.farama.org/">gymnasium<a/> environment that allows users to train an machine learning agent to play the Flappy Bird game.
+
 ## Note
 **I do NOT own any of the original game assets** except the 64x64 graphics. You can find the assets <a href="https://github.com/samuelcust/flappy-bird-assets">here</a>.
 This repository is currently not in development, so there might be bugs. I have been able to train models with the current environment, so it is functional. Of course fixes, notes and comments are always welcome.
 
-**Description**
+**Game Description**
 * The player is a little bird that tries to get trough the gap between the green pipes.
 
 **Goal of the game**
